@@ -7,28 +7,32 @@ class DemostacionesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Container(
-      height: double.infinity,
-      width: double.infinity,
-      child: Stack(alignment: AlignmentDirectional.bottomStart, children: [
-        Container(
-          height: 50,
-          width: double.infinity,
-          color: Colors.red,
-          child: const Center(
-            child: Text(
-              'Boton falso',
-              style: TextStyle(fontSize: 30),
+      body: SizedBox(
+        height: double.infinity,
+        width: double.infinity,
+        child: Stack(
+          alignment: AlignmentDirectional.bottomStart,
+          children: [
+            Container(
+              height: 50,
+              width: double.infinity,
+              color: Colors.red,
+              child: const Center(
+                child: Text(
+                  'Boton falso',
+                  style: TextStyle(fontSize: 30),
+                ),
+              ),
             ),
-          ),
+            const CardWidget(
+              icon: Icons.warning_amber_rounded,
+              titlePrimary: '¡Las contraseñas no considen!',
+              titleSecondary: 'Revisa que ambas contraseña sean iguales.',
+              titleButtom: 'REINTENTAR',
+            )
+          ],
         ),
-        const CardWidget(
-          icon: Icons.warning_amber_outlined,
-          titlePrimary: '¡Las contraseñas no considen!',
-          titleSecondary: 'Revisa que ambas contraseña sean iguales.',
-          titleButtom: 'REINTENTAR',
-        )
-      ]),
-    ));
+      ),
+    );
   }
 }
