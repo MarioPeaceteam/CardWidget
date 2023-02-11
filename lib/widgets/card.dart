@@ -90,7 +90,8 @@ class _Filter extends StatelessWidget {
               ),
               // Columna de contenido
               Padding(
-                padding: const EdgeInsets.fromLTRB(20, 30, 20, 30),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 50),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [

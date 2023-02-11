@@ -1,23 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:widgets_trabajo/widgets/widgets.dart';
 
 class PopUpWidget extends StatelessWidget {
+  final String? avatarImage;
   final double? paddingHorizontal;
+  final double? paddingVertical;
   final IconData? icon;
   final String? titlePrimary;
   final String? titleSecondary;
   final String? titleTertiary;
-  final String? titleButtom;
-  final VoidCallback? onPressed;
+  final BottomGlobalWidget? bottomPrimary;
+  final BottomGlobalWidget? bottomSecondary;
 
   const PopUpWidget({
     Key? key,
-    this.paddingHorizontal = 50,
+    this.paddingHorizontal = 30,
+    this.paddingVertical = 0,
     this.icon,
     this.titlePrimary,
     this.titleSecondary,
-    this.titleButtom,
-    this.onPressed,
     this.titleTertiary,
+    this.bottomPrimary,
+    this.bottomSecondary,
+    this.avatarImage,
   }) : super(key: key);
 
   @override
@@ -25,6 +30,7 @@ class PopUpWidget extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: paddingHorizontal!,
+        vertical: paddingVertical!,
       ),
       child: _CardContainerWidget(
         child: Stack(
@@ -47,10 +53,15 @@ class PopUpWidget extends StatelessWidget {
             ),
             // Columna de contenido
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  if (avatarImage != null)
+                    CircleAvatar(
+                      radius: 50,
+                      backgroundImage: AssetImage(avatarImage!),
+                    ),
                   if (icon != null)
                     Icon(
                       icon!,
@@ -78,23 +89,21 @@ class PopUpWidget extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: const TextStyle(fontSize: 10),
                     ),
-                  if (titleButtom != null)
-                    RawMaterialButton(
-                      padding: const EdgeInsets.symmetric(horizontal: 80),
-                      onPressed: onPressed,
-                      elevation: 0,
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      fillColor: const Color(0xFFFF5A26),
-                      child: Text(
-                        titleButtom!,
-                        style: const TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.bold,
+                  FittedBox(
+                    fit: BoxFit.cover,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          child: bottomPrimary,
                         ),
-                      ),
-                    )
+                        const SizedBox(width: 10),
+                        Container(
+                          child: bottomSecondary,
+                        )
+                      ],
+                    ),
+                  )
                 ],
               ),
             )
