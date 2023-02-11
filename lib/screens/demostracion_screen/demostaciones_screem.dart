@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:widgets_trabajo/widgets/widgets.dart';
 
+import '../../widgets/pop_up_card_widgets.dart';
+
 class DemostacionesScreen extends StatelessWidget {
   const DemostacionesScreen({Key? key}) : super(key: key);
 
@@ -11,23 +13,15 @@ class DemostacionesScreen extends StatelessWidget {
         height: double.infinity,
         width: double.infinity,
         child: Stack(
-          alignment: AlignmentDirectional.bottomStart,
-          children: [
-            Container(
-              height: 50,
-              width: double.infinity,
-              color: Colors.red,
-              child: const Center(
-                child: Text(
-                  'Boton falso',
-                  style: TextStyle(fontSize: 30),
-                ),
-              ),
-            ),
-            const CardWidget(
-              icon: Icons.warning_amber_rounded,
-              titlePrimary: '¡Las contraseñas no considen!',
-              titleSecondary: 'Revisa que ambas contraseña sean iguales.',
+          children: const [
+            PopUpWidget(
+              // paddingVertical: ,
+              icon: Icons.mail,
+              titlePrimary: 'Nisi commodo aliqua ea tempor reprehenderit.',
+              titleSecondary:
+                  'Esse qui incididunt exercitation minim minim ex nulla.',
+              titleTertiary:
+                  'Do minim laboris labore pariatur deserunt irure veniam velit esse dolore ad enim.',
               titleButtom: 'REINTENTAR',
             )
           ],
