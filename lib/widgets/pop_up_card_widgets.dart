@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:widgets_trabajo/widgets/widgets.dart';
 
 class PopUpWidget extends StatelessWidget {
-  final String? avatarImage;
   final double? paddingHorizontal;
   final double? paddingVertical;
+  final String? avatarImage;
   final IconData? icon;
   final String? titlePrimary;
   final String? titleSecondary;
@@ -16,13 +17,13 @@ class PopUpWidget extends StatelessWidget {
     Key? key,
     this.paddingHorizontal = 30,
     this.paddingVertical = 0,
+    this.avatarImage,
     this.icon,
     this.titlePrimary,
     this.titleSecondary,
     this.titleTertiary,
     this.bottomPrimary,
     this.bottomSecondary,
-    this.avatarImage,
   }) : super(key: key);
 
   @override
@@ -67,6 +68,7 @@ class PopUpWidget extends StatelessWidget {
                       icon!,
                       size: 70,
                       color: const Color(0xFFFF5A26),
+                      //todo cmbiar por un svg
                     ),
                   if (titlePrimary != null)
                     Text(
@@ -89,21 +91,34 @@ class PopUpWidget extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: const TextStyle(fontSize: 10),
                     ),
-                  FittedBox(
-                    fit: BoxFit.cover,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          child: bottomPrimary,
-                        ),
-                        const SizedBox(width: 10),
-                        Container(
-                          child: bottomSecondary,
-                        )
-                      ],
-                    ),
-                  )
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  if (bottomPrimary != null)
+                    FittedBox(
+                      fit: BoxFit.cover,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            child: bottomPrimary,
+                          ),
+                          const SizedBox(width: 10),
+                          Container(
+                            decoration: const BoxDecoration(
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Color(0x33FF5A26),
+                                  offset: Offset(0, 5),
+                                  blurRadius: 10,
+                                ),
+                              ],
+                            ),
+                            child: bottomSecondary,
+                          )
+                        ],
+                      ),
+                    )
                 ],
               ),
             )

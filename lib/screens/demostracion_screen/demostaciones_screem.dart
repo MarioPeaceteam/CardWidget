@@ -9,37 +9,27 @@ class DemostacionesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SizedBox(
+      body: Container(
         height: double.infinity,
         width: double.infinity,
         child: Stack(
           alignment: AlignmentDirectional.bottomStart,
-          children: [
-            const BottomGlobalWidget(
-              titleButtom: 'CONTINUAR',
-              radius: 0,
-            ),
+          children: const [
             PopUpWidget(
-              // paddingVertical: ,
-              icon: Icons.mail,
-              titlePrimary: 'Nisi commodo aliqua ea tempor reprehenderit.',
+              icon: Icons.mark_email_read,
+              titlePrimary: 'Tu oferta con  @Negroni ha sido suspendida.',
               titleSecondary:
-                  'Esse qui incididunt exercitation minim minim ex nulla.',
-              /* titleTertiary:
-                  'Do minim laboris labore pariatur deserunt irure veniam velit esse dolore ad enim.', */
+                  'Sentimos las molestias! puedes encontrar nuevas ofertas en el home.',
               bottomPrimary: BottomGlobalWidget(
-                paddingHorizontal: 30,
-                radius: 16,
-                titleButtom: 'REINTENTAR',
-                onPressed: () {},
+                paddingVertical: 10,
+                paddingHorizontal: 34,
+                titleButtom: 'CONTINUAR',
               ),
               bottomSecondary: BottomGlobalWidget(
-                paddingHorizontal: 30,
+                paddingHorizontal: 34,
                 paddingVertical: 10,
-                radius: 16,
-                color: Colors.grey,
                 titleButtom: 'CANCELAR',
-                onPressed: () {},
+                color: Colors.white,
               ),
             )
           ],
